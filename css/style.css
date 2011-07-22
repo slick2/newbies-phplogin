@@ -1,0 +1,26 @@
+  body{
+      background-color:#BBBBBB;
+  }
+
+  .container{
+      border:1px solid #000000;
+      background-color:#FFFFFF;
+  }
+  #header{
+      height:120px;
+      background-color:#CCCCCC;
+      padding:10px;
+  }
+
+  #wrap{
+      height:709px;
+  }
+  #content{
+      height:470px;
+      padding:10px;
+  }
+  #footer{
+      height:59px;
+      padding:10px;
+      background-color:#CCCCCC;
+  }
