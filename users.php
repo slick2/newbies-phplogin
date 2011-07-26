@@ -30,7 +30,33 @@
         header('Location:'.$config['base_url'].'/users.php?action=login');
         exit();
       break;
-
+	  
+		//signup form
+		case 'signup':
+		
+		if($_POST['submit']){
+            /*
+            TODO: Validation and Sanitize post
+            */
+			if(!isset($_POST['username']) || !isset($_POST['password'])){
+				header('location:'.$config['base_url'].'/users.php?action=signup');
+			}
+			elseif(empty($_POST['username']) || empty($_POST['password'])){
+				header('location:'.$config['base_url'].'/users.php?action=signup');
+			}
+			elseif($_POST['password'] != $_POST['password2']){
+				header('location:'.$config['base_url'].'/users.php?action=signup');
+			} else {
+				$query = "INSERT INTO users (username,password) VALUES('$_POST[username]', '$_POST[password]')";
+				mysql_query($query) or die(mysql_error());
+				header('Location:'.$config['base_url']);
+			}
+        }
+		
+		require_once('tmpl/header.php');
+		require_once('tmpl/users/signup.php');
+        require_once('tmpl/footer.php');
+		break;
       /*
       case 'add':
 

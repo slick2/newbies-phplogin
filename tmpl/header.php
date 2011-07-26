@@ -19,12 +19,14 @@
   <div id="header">
   		<h1>The header</h1>
   <ul><li><a href="<?php echo $config['base_url']?>">Home</a></li>
+  <li>
   <?php if(check_auth()):?>
-  <li><a href="<?php echo $config['base_url'].'/users.php?action=logout'?>">Logout</a></li>
+  <a href="<?php echo $config['base_url'].'/users.php?action=logout'?>">Logout</a>
   <?php else: ?>
-  <li><a href="<?php echo $config['base_url'].'/users.php?action=login'?>">Login</a></li>
-  <?php endif;?>
+  <a href="<?php echo $config['base_url'].'/users.php?action=login'?>">Login</a>
   <li><a href="<?php echo $config['base_url'].'/users.php?action=signup'?>">Sign Up</a></li>
+  <?php endif;?>
+  </li>
   <li><a href="<?php echo $config['base_url'].'/users.php?action=list'?>">Members</a></li></ul>
   </div>
   	</div>
