@@ -24,8 +24,3 @@
       padding:10px;
       background-color:#CCCCCC;
   }
-  
-  input[type=text], input[type=submit], label {
-  
-	display: block;
-  }
