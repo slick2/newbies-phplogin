@@ -80,6 +80,9 @@
             exit();
             }
         //
+
+        $result = mysql_query("select * from users u left join user_fields uf on u.id=uf.user_id");
+
         require_once('tmpl/header.php');
         require_once('tmpl/users/list.php');
         require_once('tmpl/footer.php');
@@ -87,6 +90,4 @@
 
 
   }
-
-?>
 
