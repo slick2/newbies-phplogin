@@ -57,21 +57,72 @@
 		require_once('tmpl/users/signup.php');
         require_once('tmpl/footer.php');
 		break;
-      /*
+      
       case 'add':
+        if(!check_auth()){
+            header('Location:'.$config['base_url'].'/users.php?action=login');
+            exit();            
+        }
+        
+         if($_POST['submit']){
+            //update
+            mysql_query("INSERT INTO users (username,password) VALUES('$_POST[username]', '$_POST[password]')");            
+            header('Location:'.$config['base_url'].'/users.php?action=list');
+        }
+        
+        		require_once('tmpl/header.php');
+		require_once('tmpl/users/add.php');
+        require_once('tmpl/footer.php');
+		break;
 
       break;
+      
 
-      case 'edit':
-
-
+      case 'edit':      
+        if(!check_auth()){
+            header('Location:'.$config['base_url'].'/users.php?action=login');
+            exit();
+        }
+        
+        if($_POST['submit']){
+            //update
+            mysql_query("UPDATE users SET username='".$_POST['username']."', password='".$_POST['password']."' WHERE id=".$_GET['id']);
+            
+            header('Location:'.$config['base_url'].'/users.php?action=list');
+        }
+        
+        if(empty($_GET['id'])){                        
+            header('Location:'.$config['base_url'].'/users.php?action=list');
+        }
+        
+        $result = mysql_query("SELECT * FROM users where id=".$_GET['id']);        
+        
+        
+        require_once('tmpl/header.php');
+        require_once('tmpl/users/edit.php');
+        require_once('tmpl/footer.php');
+                
       break;
+
 
       case 'delete':
-
+        if(!check_auth()){
+            header('Location:'.$config['base_url'].'/users.php?action=login');
+            exit();
+        }
+        
+        if(empty($_GET['id'])){                        
+            header('Location:'.$config['base_url'].'/users.php?action=list');
+        }
+        
+        mysql_query("DELETE FROM users where id=".$_GET['id']);
+        
+        header('Location:'.$config['base_url'].'/users.php?action=list');
+        
+        
+        
+        
       break;
-
-      */
 
       case 'list':
       default:
@@ -81,7 +132,7 @@
             }
         //
 
-        $result = mysql_query("select * from users u left join user_fields uf on u.id=uf.user_id");
+        $result = mysql_query("select * from users");
 
         require_once('tmpl/header.php');
         require_once('tmpl/users/list.php');

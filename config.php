@@ -11,7 +11,7 @@ $config['db_host']     = 'localhost';
 $config['db_name']     = 'phplogin';
 $config['db_username'] = 'root';
 $config['db_password'] = '';
-$config['base_url'] = 'http://localhost/phplogin';
+$config['base_url'] = 'http://localhost/newbies-phplogin';
 
 
 
